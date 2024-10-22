@@ -50,39 +50,51 @@ const LoginForm: React.FC = () => {
 
     return (
         <div>
-            {error && <h3>{error}</h3>}
-            <form onSubmit={formik.handleSubmit}>
-                <div>
-                    <label htmlFor='email'>Email</label>
-                    <input 
-                        type='email' 
-                        id='email' 
-                        name='email' 
-                        placeholder='Enter your email'
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.email}
-                        aria-invalid={formik.touched.email && formik.errors.email ? "true" : undefined}
-                    />
-                    {formik.touched.email && formik.errors.email && <div>{formik.errors.email}</div>}
-                </div>
-                <div>
-                    <label htmlFor='password'>Password</label>
-                    <input 
-                        type='password' 
-                        id='password' 
-                        name='password' 
-                        placeholder='Enter your password'
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.password}
-                        aria-invalid={formik.touched.password && formik.errors.password ? "true" : undefined}
-                    />
-                    {formik.touched.password && formik.errors.password && <div>{formik.errors.password}</div>}
-                </div>
-                <button type='submit' disabled={formik.isSubmitting}>Submit</button>
-            </form>
-        </div>
+        {error && <div className="text-red-600 bg-red-100 p-3 rounded mb-4">{error}</div>}
+        <form onSubmit={formik.handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor='email' className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type='email'
+              id='email'
+              name='email'
+              placeholder='Enter your email'
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              aria-invalid={formik.touched.email && formik.errors.email ? "true" : undefined}
+              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {formik.touched.email && formik.errors.email && (
+              <div className="text-red-600 mt-1">{formik.errors.email}</div>
+            )}
+          </div>
+          <div>
+            <label htmlFor='password' className="block text-sm font-medium text-gray-700">Password</label>
+            <input
+              type='password'
+              id='password'
+              name='password'
+              placeholder='Enter your password'
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              aria-invalid={formik.touched.password && formik.errors.password ? "true" : undefined}
+              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {formik.touched.password && formik.errors.password && (
+              <div className="text-red-600 mt-1">{formik.errors.password}</div>
+            )}
+          </div>
+          <button
+            type='submit'
+            disabled={formik.isSubmitting}
+            className="w-full bg-indigo-600 text-white p-3 rounded hover:bg-indigo-700 transition duration-200"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     );
 };
 

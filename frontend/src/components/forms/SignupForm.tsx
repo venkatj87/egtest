@@ -77,49 +77,59 @@ const SignupForm: React.FC = () => {
   }
 
   return (
-    <div>
-      {error && <h3 style={{ color: 'red' }}>{error}</h3>}
-      <form onSubmit={formik.handleSubmit}>
-        <div>
-          <label htmlFor="name" aria-label="name">Name</label>
-          <input
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.name}
-            id="name"
-            name="name"
-            placeholder="Enter your name"
-            maxLength={15}
-          />
-          {formik.errors.name && <div style={{ color: 'red' }}>{formik.errors.name}</div>}
-        </div>
-        <div>
-          <label htmlFor="email" aria-label="email">Email</label>
-          <input
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter your email"
-          />
-          {formik.errors.email && <div style={{ color: 'red' }}>{formik.errors.email}</div>}
-        </div>
-        <div>
-          <label htmlFor="password" aria-label="password">Password</label>
-          <input
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter your password"
-            minLength={8}
-          />
-          {formik.errors.password && <div style={{ color: 'red' }}>{formik.errors.password}</div>}
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+    <div className="flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+        {error && <div className="text-red-600 bg-red-100 p-3 rounded mb-4">{error}</div>}
+        <form onSubmit={formik.handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              onChange={formik.handleChange}
+              value={formik.values.name}
+              placeholder="Enter your name"
+              maxLength={15}
+              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {formik.errors.name && <div className="text-red-600 mt-1">{formik.errors.name}</div>}
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              placeholder="Enter your email"
+              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {formik.errors.email && <div className="text-red-600 mt-1">{formik.errors.email}</div>}
+          </div>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={formik.handleChange}
+              value={formik.values.password}
+              placeholder="Enter your password"
+              minLength={8}
+              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {formik.errors.password && <div className="text-red-600 mt-1">{formik.errors.password}</div>}
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 text-white p-3 rounded hover:bg-indigo-700 transition duration-200"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
