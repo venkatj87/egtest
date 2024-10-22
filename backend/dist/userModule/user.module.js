@@ -14,22 +14,16 @@ const jwt_1 = require("@nestjs/jwt");
 const userController_1 = require("./userController");
 const user_service_1 = require("./user.service");
 const jwt_strategy_1 = require("./jwt/jwt.strategy");
-const config_1 = require("@nestjs/config");
 let UserModule = class UserModule {
 };
 exports.UserModule = UserModule;
 exports.UserModule = UserModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot({
-                isGlobal: true,
-            }),
             typeorm_1.TypeOrmModule.forFeature([user_entity_1.User]),
             jwt_1.JwtModule.registerAsync({
-                imports: [config_1.ConfigModule],
-                inject: [config_1.ConfigService],
-                useFactory: async (configService) => ({
-                    secret: configService.get('JWT_SECRET'),
+                useFactory: async () => ({
+                    secret: process.env.JWT_SECRET,
                     signOptions: { expiresIn: '1h' },
                 }),
             }),

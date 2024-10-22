@@ -46,7 +46,7 @@ const SignupForm: React.FC = () => {
 
     if (!values.password) {
       errors.password = 'Required';
-    } else if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/i.test(values.password)) {
+    } else if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/i.test(values.password)) {
       errors.password = 'Password must contain at least 1 letter, 1 number, and 1 special character';
     }
 
