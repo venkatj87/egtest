@@ -2,7 +2,8 @@ import axios, { InternalAxiosRequestConfig, AxiosRequestConfig, AxiosResponse } 
 import { getUser, saveItem } from './storage';
 import { isTokenExpired } from './auth';
 
-axios.defaults.baseURL = 'http://localhost:3001';
+const apiUrl = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = apiUrl || 'http://localhost:3001';
 
 // TypeScript interface for the User object
 interface User {
